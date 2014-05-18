@@ -2,7 +2,7 @@
     <channel>
         <title>戴城厂报</title>
         <link>http://luxiaolu.github.io</link>
-        <lastBuildDate>2014-05-18T22:32:27-08:00</lastBuildDate>
+        <lastBuildDate>2014-05-18T22:51:01-08:00</lastBuildDate>
         <pubDate>{date}</pubDate>
             <item>
                 <title>Cyan - a simple static blog generator</title>
@@ -26,28 +26,28 @@
                 <description><h2>python中的str和unicode</h2>
 <p>测试: 在windows的cmd下.<br />
 1. <br />
->&gt;&gt; a= "你好" <br />
->&gt;&gt; a <br />
-\xc4\xe3\xba\xc3'   </p>
+<code>&gt;&gt;&gt; a= "你好"</code> <br />
+<code>&gt;&gt;&gt; a</code>   <br />
+<code>\xc4\xe3\xba\xc3'</code>   </p>
 <ol>
 <li>
-<p>>&gt;&gt; a= u"你好" <br />
->&gt;&gt; a  <br />
-u'\u4f60\u597d'   </p>
+<p><code>&gt;&gt;&gt; a= u"你好"</code> <br />
+<code>&gt;&gt;&gt; a</code>  <br />
+<code>u'\u4f60\u597d'</code>   </p>
 </li>
 <li>
-<p>>&gt;&gt; a= "你好" <br />
->&gt;&gt; a <br />
-\xc4\xe3\xba\xc3' <br />
->&gt;&gt; a.decode("gbk") <br />
-u'\u4f60\u597d'   </p>
+<p><code>&gt;&gt;&gt; a= "你好"</code> <br />
+<code>&gt;&gt;&gt; a</code> <br />
+<code>xc4\xe3\xba\xc3'</code>   <br />
+<code>&gt;&gt;&gt; a.decode("gbk")</code> <br />
+<code>u'\u4f60\u597d'</code>   </p>
 </li>
 </ol>
 <p>python2中引号定义的字符串是 “str” 类型。<br />
->&gt;&gt; type("test"） <br />
+<code>&gt;&gt;&gt; type("test")</code> <br />
 <code>&lt;type 'str'&gt;</code>  <br />
 加一个字符u定义的是 “unicode” 类型。<br />
->&gt;&gt; type(u"test") <br />
+<code>&gt;&gt;&gt; type(u"test")</code>   <br />
 <code>&lt;'type 'unicode'&gt;</code>   </p>
 <p>str 类型的字符是由unicode编码后储存的，测试1中“你好”是gbk编码，测试3中用对应的解码方式解码后会变成unicode类型。</p>
 <h3>问题一： 什么是字符编码</h3>
@@ -64,7 +64,8 @@ u'\u4f60\u597d'   </p>
 占三个字节的字符: 1110xxxx 10xxxxxx 10xxxxxx <br />
 占四个字节的字符: 11110xxx 10xxxxxx 10xxxxxx  <br />
 可以看出，第一个字节前边110表示这个字符占两个字节，0xxx则表示就一个字节了。后边的字节前两个字符都是10。     </p>
-<p>类似还有UTF-16（字符用两个字节或四个字节表示）和UTF-32（字符用四个字节表示）。</p></description>
+<p>类似还有UTF-16（字符用两个字节或四个字节表示）和UTF-32（字符用四个字节表示）。</p>
+<p>参考: <a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html">字符编码笔记：ASCII，Unicode和UTF-8</a></p></description>
                 <link>/post/2014-05-18-Python_str_unicode.html</link>
                 <guid>/post/2014-05-18-Python_str_unicode.html</guid>
                 <pubDate>2014-05-1800:00:00-08:00</pubDate>

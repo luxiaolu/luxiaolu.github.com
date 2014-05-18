@@ -7,27 +7,27 @@ pythonÖÐµÄstrºÍunicode
 
 ²âÊÔ: ÔÚwindowsµÄcmdÏÂ.  
 1.   
-\>>> a= "ÄãºÃ"   
-\>>> a   
-\xc4\xe3\xba\xc3'   
+`>>> a= "ÄãºÃ"`   
+`>>> a`     
+`\xc4\xe3\xba\xc3'`   
    
 2.   
-\>>> a= u"ÄãºÃ"   
-\>>> a    
-u'\u4f60\u597d'   
+`>>> a= u"ÄãºÃ"`   
+`>>> a`    
+`u'\u4f60\u597d'`   
    
 3.    
-\>>> a= "ÄãºÃ"   
-\>>> a   
-\xc4\xe3\xba\xc3'   
-\>>> a.decode("gbk")   
-u'\u4f60\u597d'   
+`>>> a= "ÄãºÃ"`   
+`>>> a`   
+`xc4\xe3\xba\xc3'`     
+`>>> a.decode("gbk")`   
+`u'\u4f60\u597d'`   
    
 python2ÖÐÒýºÅ¶¨ÒåµÄ×Ö·û´®ÊÇ ¡°str¡± ÀàÐÍ¡£  
-\>>> type("test"£©   
+`>>> type("test")`   
 `<type 'str'>`    
 ¼ÓÒ»¸ö×Ö·ûu¶¨ÒåµÄÊÇ ¡°unicode¡± ÀàÐÍ¡£  
-\>>> type(u"test")   
+`>>> type(u"test")`     
 `<'type 'unicode'>`   
    
 str ÀàÐÍµÄ×Ö·ûÊÇÓÉunicode±àÂëºó´¢´æµÄ£¬²âÊÔ1ÖÐ¡°ÄãºÃ¡±ÊÇgbk±àÂë£¬²âÊÔ3ÖÐÓÃ¶ÔÓ¦µÄ½âÂë·½Ê½½âÂëºó»á±ä³ÉunicodeÀàÐÍ¡£
@@ -55,4 +55,6 @@ utf-8¾ÍÊÇÎªÁË½â¾öÕâ¸öÎÊÌâµÄ£¡utf-8¶ÔunicodeÔÙ½øÐÐ±àÂë£¬Ã¿¸ö×Ö·û¸ù¾ÝÇé¿ö¿ÉÒÔÕ¼²»Í
 ¿ÉÒÔ¿´³ö£¬µÚÒ»¸ö×Ö½ÚÇ°±ß110±íÊ¾Õâ¸ö×Ö·ûÕ¼Á½¸ö×Ö½Ú£¬0xxxÔò±íÊ¾¾ÍÒ»¸ö×Ö½ÚÁË¡£ºó±ßµÄ×Ö½ÚÇ°Á½¸ö×Ö·û¶¼ÊÇ10¡£     
 
 ÀàËÆ»¹ÓÐUTF-16£¨×Ö·ûÓÃÁ½¸ö×Ö½Ú»òËÄ¸ö×Ö½Ú±íÊ¾£©ºÍUTF-32£¨×Ö·ûÓÃËÄ¸ö×Ö½Ú±íÊ¾£©¡£
+
+²Î¿¼: [×Ö·û±àÂë±Ê¼Ç£ºASCII£¬UnicodeºÍUTF-8](http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html)
 
