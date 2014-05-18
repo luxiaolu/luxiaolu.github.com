@@ -2,7 +2,7 @@
     <channel>
         <title>戴城厂报</title>
         <link>http://luxiaolu.github.io</link>
-        <lastBuildDate>2013-12-15T17:36:32-08:00</lastBuildDate>
+        <lastBuildDate>2014-05-18T22:29:01-08:00</lastBuildDate>
         <pubDate>{date}</pubDate>
             <item>
                 <title>Cyan - a simple static blog generator</title>
@@ -19,7 +19,51 @@
 我该想想下一个业余项目了。</p></description>
                 <link>/post/2013-12-15-cyan.html</link>
                 <guid>/post/2013-12-15-cyan.html</guid>
-                <pubDate>2013-12-1500:00:00-08:00</pubDate>
+                <pubDate>2014-05-1800:00:00-08:00</pubDate>
+            </item>
+            <item>
+                <title>The Str and Unicode object in python</title>
+                <description><h2>python中的str和unicode</h2>
+<p>测试: 在windows的cmd下.
+1.
+>&gt;&gt; a= "你好"
+>&gt;&gt; a
+\xc4\xe3\xba\xc3'</p>
+<p>2.
+>&gt;&gt; a= u"你好"
+>&gt;&gt; a
+u'\u4f60\u597d'</p>
+<p>3.
+>&gt;&gt; a= "你好"
+>&gt;&gt; a
+\xc4\xe3\xba\xc3'
+>&gt;&gt; a.decode("gbk")
+u'\u4f60\u597d'</p>
+<p>python2中引号定义的字符串是 “str” 类型。
+>&gt;&gt; type("test"）
+<code>&lt;type 'str'&gt;</code>
+加一个字符u定义的是 “unicode” 类型。
+>&gt;&gt; type(u"test")
+<code>&lt;'type 'unicode'&gt;</code></p>
+<p>str 类型的字符是由unicode编码后储存的，测试1中“你好”是gbk编码，测试3中用对应的解码方式解码后会变成unicode类型。</p>
+<h3>问题一： 什么是字符编码</h3>
+<p>由于计算机内部储存数据只能是2进制格式，所以字符串只能编码后保存，最常见的就是<strong>ascii</strong>编码了。编码方式就是一张表，每个字符都有一个对应的二进制数，例如<strong>ascii</strong>编码，字符'a'对应的是 01100001。<strong>ascii</strong>编码字符集太小(只有128个字符)，就是那张表太小了，世界上各种语言，每种语言都有不同的字符集要想计算机保存和显示它们<strong>ascii</strong>编码就不够用了。</p>
+<h3>问题二：什么是unicode</h3>
+<p>unicode 是个更大的字符集，可以容纳100多万个符号，每个字符依然有一个唯一的二进制数与之对应。</p>
+<h3>问题三：unicode和utf-8，utf-16，utf-32的关系。</h3>
+<p>有了unicode，那么字符'a'在unicode中对应的二进制数是多少呢？答案还是01100001，只有八位，一个字节。而汉字“严”对应的二进制数是100111000100101，15位，那么就需要有两个字节来储存。   </p>
+<p>那么一个字符到底该用几个字节来保存呢，有的符号对应的二进制数很大，甚至需要四个字节来保存，这也是为什么unicode可以容纳100多万个字符，排在表末尾的字符对应的二进制数自然大了。   </p>
+<p>如果所有字符统一用四个字节来保存的话，那么一篇文章里如果只有英文字符的话，ascii编码就搞定了，ascii可是都只用一个字节就好了，这样岂不太浪费。ascii可没有这个烦人的问题。  </p>
+<p>utf-8就是为了解决这个问题的！utf-8对unicode再进行编码，每个字符根据情况可以占不同的字节。那么计算机怎么知道比如三个字节到底是三个字符还是一个字符呢，utf-8怎么解决这个问题的呢？   </p>
+<p>占一个字节的字符: 0xxxxxxx  <br />
+占两个字节的字符: 110xxxxx 10xxxxxx   <br />
+占三个字节的字符: 1110xxxx 10xxxxxx 10xxxxxx <br />
+占四个字节的字符: 11110xxx 10xxxxxx 10xxxxxx  <br />
+可以看出，第一个字节前边110表示这个字符占两个字节，0xxx则表示就一个字节了。后边的字节前两个字符都是10。     </p>
+<p>类似还有UTF-16（字符用两个字节或四个字节表示）和UTF-32（字符用四个字节表示）。</p></description>
+                <link>/post/2014-05-18-Python_str_unicode.html</link>
+                <guid>/post/2014-05-18-Python_str_unicode.html</guid>
+                <pubDate>2014-05-1800:00:00-08:00</pubDate>
             </item>
     </channel>
 </rss>

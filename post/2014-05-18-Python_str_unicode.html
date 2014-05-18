@@ -50,7 +50,7 @@
     <div id="container">
       <div id="main" role="main">
         <header>
-        <h1>Cyan - a simple static blog generator</h1>
+        <h1>The Str and Unicode object in python</h1>
         </header>
         <nav>
         <span><a title=Home href=/index.html>Home</a></span>
@@ -63,17 +63,44 @@
         
     <article class="content">
         <section class="post">
-        <p><strong>Cyan</strong> 是一个简单的静态博客生成器，用来生成本博客。类似于 <strong>jekyll</strong>， 借助<strong>Github</strong>的 <strong>pages</strong> 服务可以轻松的得到一个具有版本控制功能的静态博客。当然相对于 <strong>jekyll</strong>， <strong>Cyan</strong>简单多了，因为更多关注于本博客的特定实现，不需要做成很通用的形式，所以抽象程度不高，实际上它只花了我两天的业余时间和一个休息日。</p>
-<h3><strong>Cyan</strong> 功能和特点</h3>
-<ul>
-<li>使用markdown来撰写文章。</li>
-<li>评论功能使用国产的多说。</li>
-<li>支持代码高亮。</li>
-<li>项目地址在<a href="https://github.com/luxiaolu/CyanBlog">这里</a>。</li>
-</ul>
-<p>博客名字 <strong>戴城厂报</strong> 中的<strong>戴城</strong>是一本小说中的地名，主人公名叫路小路，他把他的青年时代扔在一个叫做戴城糖精厂的地方。我一直觉得我和小说中的主人公有点像，只不过是另一座城，另一个厂，换水泵拧灯泡变成敲键盘而已。</p>
-<p>生成器名字不是乱取的。 <br />
-我该想想下一个业余项目了。</p>
+        <h2>python中的str和unicode</h2>
+<p>测试: 在windows的cmd下.
+1.
+>&gt;&gt; a= "你好"
+>&gt;&gt; a
+\xc4\xe3\xba\xc3'</p>
+<p>2.
+>&gt;&gt; a= u"你好"
+>&gt;&gt; a
+u'\u4f60\u597d'</p>
+<p>3.
+>&gt;&gt; a= "你好"
+>&gt;&gt; a
+\xc4\xe3\xba\xc3'
+>&gt;&gt; a.decode("gbk")
+u'\u4f60\u597d'</p>
+<p>python2中引号定义的字符串是 “str” 类型。
+>&gt;&gt; type("test"）
+<code>&lt;type 'str'&gt;</code>
+加一个字符u定义的是 “unicode” 类型。
+>&gt;&gt; type(u"test")
+<code>&lt;'type 'unicode'&gt;</code></p>
+<p>str 类型的字符是由unicode编码后储存的，测试1中“你好”是gbk编码，测试3中用对应的解码方式解码后会变成unicode类型。</p>
+<h3>问题一： 什么是字符编码</h3>
+<p>由于计算机内部储存数据只能是2进制格式，所以字符串只能编码后保存，最常见的就是<strong>ascii</strong>编码了。编码方式就是一张表，每个字符都有一个对应的二进制数，例如<strong>ascii</strong>编码，字符'a'对应的是 01100001。<strong>ascii</strong>编码字符集太小(只有128个字符)，就是那张表太小了，世界上各种语言，每种语言都有不同的字符集要想计算机保存和显示它们<strong>ascii</strong>编码就不够用了。</p>
+<h3>问题二：什么是unicode</h3>
+<p>unicode 是个更大的字符集，可以容纳100多万个符号，每个字符依然有一个唯一的二进制数与之对应。</p>
+<h3>问题三：unicode和utf-8，utf-16，utf-32的关系。</h3>
+<p>有了unicode，那么字符'a'在unicode中对应的二进制数是多少呢？答案还是01100001，只有八位，一个字节。而汉字“严”对应的二进制数是100111000100101，15位，那么就需要有两个字节来储存。   </p>
+<p>那么一个字符到底该用几个字节来保存呢，有的符号对应的二进制数很大，甚至需要四个字节来保存，这也是为什么unicode可以容纳100多万个字符，排在表末尾的字符对应的二进制数自然大了。   </p>
+<p>如果所有字符统一用四个字节来保存的话，那么一篇文章里如果只有英文字符的话，ascii编码就搞定了，ascii可是都只用一个字节就好了，这样岂不太浪费。ascii可没有这个烦人的问题。  </p>
+<p>utf-8就是为了解决这个问题的！utf-8对unicode再进行编码，每个字符根据情况可以占不同的字节。那么计算机怎么知道比如三个字节到底是三个字符还是一个字符呢，utf-8怎么解决这个问题的呢？   </p>
+<p>占一个字节的字符: 0xxxxxxx  <br />
+占两个字节的字符: 110xxxxx 10xxxxxx   <br />
+占三个字节的字符: 1110xxxx 10xxxxxx 10xxxxxx <br />
+占四个字节的字符: 11110xxx 10xxxxxx 10xxxxxx  <br />
+可以看出，第一个字节前边110表示这个字符占两个字节，0xxx则表示就一个字节了。后边的字节前两个字符都是10。     </p>
+<p>类似还有UTF-16（字符用两个字节或四个字节表示）和UTF-32（字符用四个字节表示）。</p>
         </section>
         <section class="meta">
             <br>
@@ -83,20 +110,20 @@
 
             <span class="categories">
               in categories
-              <a href=/categories.html title=Projects>Projects</a>&nbsp;
+              <a href=/categories.html title=Uncategorized>Uncategorized</a>&nbsp;
             </span>
 
             <span class="tags">
               tagged with 
                   <a href=/tags.html title=python>python</a>&nbsp;
-                  <a href=/tags.html title=blog>blog</a>&nbsp;
+                  <a href=/tags.html title= character encoding> character encoding</a>&nbsp;
             </span>
         </section>
         <hr>
         <div class="pre_post">
-                None
+                <a href=/post/2013-12-15-cyan.html title=Cyan - a simple static blog generator><< Cyan - a simple static blog generator</a>
                   &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-                <a href=/post/2014-05-18-Python_str_unicode.html title=The Str and Unicode object in python>The Str and Unicode object in python >></a>
+                None
         </div>
 <!-- Duoshuo Comment BEGIN -->
 	<div class="ds-thread"></div>
